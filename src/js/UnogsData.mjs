@@ -1,5 +1,7 @@
 import axios from 'axios';
 
+const RapidAPI_KEY = import.meta.env.VITE_RAPID_API_KEY;
+
 function convertToJson(res) {
   if (res.status == 200) {
     return res.data;
@@ -17,7 +19,7 @@ const options = {
     type: 'movie'
   },
   headers: {
-    'X-RapidAPI-Key': 'f863c0cc06msh86e6d119675b9d9p1c5a39jsn81cbea35972f',
+    'X-RapidAPI-Key': RapidAPI_KEY,
     'X-RapidAPI-Host': 'unogs-unogs-v1.p.rapidapi.com'
   }
 };
