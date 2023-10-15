@@ -10,28 +10,30 @@ function convertToJson(res) {
   }
 }
 
-const options = {
-  method: 'GET',
-  url: 'https://unogs-unogs-v1.p.rapidapi.com/search/titles',
-  params: {
-    order_by: 'date',
-    title: 'akira',
-    type: 'movie'
-  },
-  headers: {
-    'X-RapidAPI-Key': RapidAPI_KEY,
-    'X-RapidAPI-Host': 'unogs-unogs-v1.p.rapidapi.com'
-  }
-};
-
-
 export default class MoviesData {
-  constructor() {
+  constructor(contentType, searchText, sortOrder = 'title_asc') {
+    this.options = {
+      method: 'GET',
+      url: 'https://unogs-unogs-v1.p.rapidapi.com/search/titles',
+      params: {
+        order_by: sortOrder
+      },
+      headers: {
+        'X-RapidAPI-Key': RapidAPI_KEY,
+        'X-RapidAPI-Host': 'unogs-unogs-v1.p.rapidapi.com'
+      }
+    };
+    this.options.params.title = searchText;
+
+    if (contentType != 'all') {
+      this.options.params.type = contentType; 
+    }
+
   }
 
   async getData() {
     try {
-      const response = await axios.request(options);
+      const response = await axios.request(this.options);
       const data = await convertToJson(response);
       // console.log(data.Result);
       return data.results;

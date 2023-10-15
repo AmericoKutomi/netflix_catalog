@@ -24,24 +24,34 @@ export default class MovieListing {
         this.renderList(list);
         document.querySelector('.title').innerHTML = this.category;
     }
-    async renderList(list, clear = false) {
+    async renderList(list, clear = true) {
         renderListWithTemplate(movieCardTemplate, this.listElement, list, 'afterbegin', clear);
     }
 
     async sortBy(order_field) {
         const list = await this.dataSource.getData(this.category);
         let sortedList = [];
-        if (order_field == 'title') {
+        if (order_field == 'title_asc' || order_field == 'title') {
             sortedList = list.sort(function(a,b) {
                 let aName = a.title.toLowerCase();
                 let bName = b.title.toLowerCase();
-                if(aName > bName){return 1;}
-                if(aName < bName){return -1;}
-                return 0;
+                if (order_field == 'title_asc') {
+                    if(aName > bName){return 1;}
+                    if(aName < bName){return -1;}
+                    return 0;   
+                } else {
+                    if(aName < bName){return 1;}
+                    if(aName > bName){return -1;}
+                    return 0;   
+                }
             })
-        } else if (order_field == 'year') {
+        } else if (order_field == 'film_year' || order_field == 'film_year_asc') {
             sortedList = list.sort(function(a,b) {
-                return b.year - a.year;
+                if (order_field == 'film_year_asc') {
+                    return b.year - a.year;
+                } else {
+                    return a.year - b.year;
+                }
             });
         };
         this.renderList(sortedList, true);

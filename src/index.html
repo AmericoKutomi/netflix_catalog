@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>My Categories and Movies</title>
-  <meta name="description" content="My Categories and Movies - Demonstration Project">
+  <meta name="description" content="My Netflix Movies">
   <meta name="author" content="Americo Sadao Kutomi">
   <link rel="stylesheet" href="/css/style.css" />
   <!--
@@ -32,23 +32,23 @@
         <label class="filter-label" for="content-type">Filter by Type:</label>
         <select class="filter-select" id="content-type">
           <option value="all">All types</option>
-          <option value="movie">Movies</option>
+          <option value="movie" selected>Movies</option>
           <option value="series">Series</option>
         </select>
       </div>
       <div id="search-area">
-        <label class="search-label" for="content-search">Search title:</label>
+        <label class="search-label" for="content-search">Search for:</label>
         <input type="text" id="search-for" name="search-for" value="Akira">
-        <input type="submit" value="Search and Filter">
+        <input type="submit" id="search-button" value="Search and Filter">
       </div>
       <div id="sort-area">
         <label class="sort-label" for="content-sort">Sort by:</label>
 
         <select class="sort-select" id="content-sort">
-          <option value="title-asc">Title A-Z</option>
-          <option value="title-desc">Title Z-A</option>
-          <option value="year-asc">Year ascending</option>
-          <option value="year-desc">Year descending</option>
+          <option value="title_asc">Title A-Z</option>
+          <option value="title">Title Z-A</option>
+          <option value="film_year_asc">Year ascending</option>
+          <option value="film_year">Year descending</option>
         </select>
       </div>
     </section>
