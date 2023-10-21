@@ -41,12 +41,30 @@ export default class MoviesData {
       console.error(error);
     }
   }
-
-  // async findProductById(id) {
-    // const response = await fetch(baseURL + `product/${id}`);
-    // const data = await convertToJson(response);
-    // return data.Result;
-  // }
 }
 
-// console.log(Filme.getData());
+export class ContentData {
+  constructor(contentId) {
+    this.options = {
+      method: 'GET',
+      url: 'https://unogs-unogs-v1.p.rapidapi.com/title/details',
+      params: {
+      },
+      headers: {
+        'X-RapidAPI-Key': RapidAPI_KEY,
+        'X-RapidAPI-Host': 'unogs-unogs-v1.p.rapidapi.com'
+      }
+    };
+    this.options.params.netflix_id = contentId;
+  }
+
+  async getData() {
+    try {
+      const response = await axios.request(this.options);
+      const data = await convertToJson(response);
+      return data;
+      } catch (error) {
+      console.error(error);
+    }
+  }
+}

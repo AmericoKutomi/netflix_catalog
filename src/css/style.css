@@ -114,7 +114,7 @@ button {
 
 .movie-list {
   display: grid;
-  grid-template-columns: auto auto auto auto;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
   gap: 10px; 
 }
 
@@ -128,12 +128,13 @@ button {
   padding-left: 0;
 }
 
-.movie-list h2 {
+.movie-card h3 {
+  display: block;
   margin: 0;
   font-size: 0.9em;
 }
 
-.movie-list h3 {
+.movie-list h4 {
   margin: 0;
   font-size: 0.8em;
 }
@@ -158,21 +159,45 @@ button {
 
 /* End of Movies Listing Styles */
 
-/* Cart icon styles */
-.cart {
-  padding-top: 1em;
-  position: relative;
+/* Favorite List Page styles */
+
+.favorite-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 10px; 
+}
+
+.favorite-list > li {
+  list-style-type: none;
+  justify-content: center;
   text-align: center;
+  color: var(--dark-grey);
+  padding-left: 0;
 }
 
-.cart svg {
-  width: 25px;
-}
-.cart:hover svg {
-  fill: gray;
+.favorite-list img {
+  
+  margin: auto;
 }
 
-/* End cart icon styles */
+.favorite-list h3 {
+  
+  margin: 0;
+  font-size: 0.9em;
+}
+
+.movie-card h4 {
+  
+  margin: 0;
+  font-size: 0.8em;
+}
+
+.favorite-list p {
+  padding: 0px 40px 0px 40px;
+  font-size: 0.7em;
+}
+
+/* End Favorite List Page styles */
 
 
 .products {
@@ -218,14 +243,27 @@ button {
 }
 /* End product list card */
 
-.product-detail {
+/* Movie / Content Detail page */
+
+.movie-detail {
   padding: 1em;
   max-width: 500px;
   margin: auto;
 }
 
-.product-detail img {
-  width: 100%;
+.movie-detail img {
+  display: block;
+  margin: auto;
+}
+
+.content__maturity {
+  font-size: .9em;
+}
+
+#addToFavorite {
+  background-color: var(--tertiary-color);
+  color: red;
+  font-size: var(--small-font);
 }
 
 /* Start cart list card styles */

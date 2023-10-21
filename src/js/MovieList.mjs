@@ -2,14 +2,15 @@ import { renderListWithTemplate } from './utils.mjs';
 
 function movieCardTemplate(movie) {
   return `<li class="movie-card">
-  <a href="#">
-  <img
-    src="${movie.img}"
-    alt="Image of ${movie.title}"
-  />
-  <h2 class="content__title">${movie.title}</h2>
-  <h3 class="content__type">${movie.title_type}</h3>
-  <p class="content__synopsis">${movie.synopsis}</p></a>
+  <a href="/content/index.html?contentid=${movie.netflix_id}">
+    <img
+        src="${movie.img}"
+        alt="Image of ${movie.title}"
+    />
+    <h3 class="content__title">${movie.title}</h3>
+    <h4 class="content__type">${movie.title_type}<span> (${movie.year})</span></h4>
+    <p class="content__synopsis">${movie.synopsis}</p>
+  </a>
 </li>`;
 }
 
@@ -20,9 +21,8 @@ export default class MovieListing {
     }
 
     async init() {
-        const list = await this.dataSource.getData(this.category);
+        const list = await this.dataSource.getData();
         this.renderList(list);
-        document.querySelector('.title').innerHTML = this.category;
     }
     async renderList(list, clear = true) {
         renderListWithTemplate(movieCardTemplate, this.listElement, list, 'afterbegin', clear);
@@ -47,7 +47,7 @@ export default class MovieListing {
             })
         } else if (order_field == 'film_year' || order_field == 'film_year_asc') {
             sortedList = list.sort(function(a,b) {
-                if (order_field == 'film_year_asc') {
+                if (order_field == 'film_year') {
                     return b.year - a.year;
                 } else {
                     return a.year - b.year;
