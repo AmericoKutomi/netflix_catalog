@@ -3,14 +3,16 @@ import { ContentData } from './UnogsData.mjs';
 
 function favoriteTemplate(movie) {
   return `<li class="movie-card" id="card__${movie.netflix_id}">
-    <img
-        src="${movie.default_image}"
-        alt="Image of ${movie.title}"
-    />
-    <h3 class="content__title">${movie.title}</h3>
-    <h4 class="content__type">${movie.title_type}<span> (${movie.year})</span></h4>
-    <p class="content__synopsis">${movie.synopsis}</p>
-    <div id="cont__${movie.netflix_id}" title='Remove' class='remove_item'>Remove ❌</div>
+    <div class="movie-card-frame">
+      <img
+          src="${movie.default_image}"
+          alt="Image of ${movie.title}"
+      />
+      <h3 class="content__title">${movie.title}</h3>
+      <h4 class="content__type">${movie.title_type}<span> (${movie.year})</span></h4>
+      <p class="content__synopsis">${movie.synopsis}</p>
+      <div id="cont__${movie.netflix_id}" title='Remove' class='remove_item'>Remove ❌</div>
+    </div>
   </li>`;
 }
 

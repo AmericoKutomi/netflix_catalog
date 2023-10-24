@@ -4,6 +4,7 @@ import { ContentData } from './UnogsData.mjs';
 function contentDetailsTemplate(movie) {
   return `<section class="movie-detail">
     <img
+      class="movie-detail-img"
       src="${movie.default_image}"
       alt="Image of ${movie.title}"
     />

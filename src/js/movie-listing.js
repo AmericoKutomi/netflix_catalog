@@ -8,7 +8,6 @@ const element = document.querySelector('.movie-list');
 const contentType = document.querySelector('#content-type');
 const searchText = document.querySelector('#search-for');
 const sortOrder = document.querySelector('#content-sort');
-const titleSearched = document.querySelector('#title-searched');
 const searchButton = document.querySelector('#search-button');
 const sortOption = document.querySelector('#content-sort');
 
@@ -26,10 +25,12 @@ function selectNewContents() {
   }
   movies = new MovieList(SelectedMovies, element);
   movies.init();
-  titleSearched.innerHTML = `${searchText.value}`;
 }
 
-selectNewContents();
+document.body.onload = function () {
+  selectNewContents();
+};
+// selectNewContents();
 
 searchButton.addEventListener('click', () => {
   selectNewContents();

@@ -18,21 +18,29 @@ export default class MovieListing {
     constructor(dataSource, listElement) {
         this.dataSource = dataSource;
         this.listElement = listElement;
+        
     }
 
     async init() {
-        const list = await this.dataSource.getData();
-        this.renderList(list);
+        const titleSearched = document.querySelector('#title-searched');
+        const searchText = document.querySelector('#search-for');
+        this.list = await this.dataSource.getData();
+        if (this.list) {
+            titleSearched.innerHTML = `Contents found for ${searchText.value}`;
+            this.renderList(this.list);
+        } else {
+            this.listElement.innerHTML = '';
+            titleSearched.innerHTML = `No contents found for ${searchText.value}`;
+        }
     }
     async renderList(list, clear = true) {
         renderListWithTemplate(movieCardTemplate, this.listElement, list, 'afterbegin', clear);
     }
 
     async sortBy(order_field) {
-        const list = await this.dataSource.getData(this.category);
         let sortedList = [];
         if (order_field == 'title_asc' || order_field == 'title') {
-            sortedList = list.sort(function(a,b) {
+            sortedList = this.list.sort(function(a,b) {
                 let aName = a.title.toLowerCase();
                 let bName = b.title.toLowerCase();
                 if (order_field == 'title_asc') {
@@ -46,7 +54,7 @@ export default class MovieListing {
                 }
             })
         } else if (order_field == 'film_year' || order_field == 'film_year_asc') {
-            sortedList = list.sort(function(a,b) {
+            sortedList = this.list.sort(function(a,b) {
                 if (order_field == 'film_year') {
                     return b.year - a.year;
                 } else {
@@ -56,4 +64,5 @@ export default class MovieListing {
         };
         this.renderList(sortedList, true);
     }
+
 }

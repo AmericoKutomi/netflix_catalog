@@ -1,64 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>My Categories and Movies</title>
-  <meta name="description" content="My Netflix Movies">
-  <meta name="author" content="Americo Sadao Kutomi">
-  <link rel="stylesheet" href="/css/style.css" />
-  <!--
-    <link rel="icon" href="favicon.ico">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Categories and Movies</title>
+    <meta name="description" content="My Netflix Movies" />
+    <meta name="author" content="Americo Sadao Kutomi" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="icon" href="/images/favicon.ico" />
+    <!--
 
     <meta property="og:title" content="Americo Sadao Kutomi - Pirituba Chamber of Commerce Portal - WDD 230 Class Project " >
     <meta property="og:type" content="website" >
     <meta property="og:image" content="https://americokutomi.github.io/wdd230/images/city-america.jpg" >    
     <meta property="og:url" content="https://americokutomi.github.io/wdd230/chamber" >
     -->
-  <script src="js/main.js" type="module"></script>
-  <script src="js/movie-listing.js" type="module"></script>
-</head>
+    <script src="js/main.js" type="module"></script>
+    <script src="js/movie-listing.js" type="module"></script>
+  </head>
 
-<body>
-  <header class="divider" id="main-header"></header>
-  <main class="divider">
-    <div class="hero">
-      <img src="/images/banner-sm.jpg" srcset="images/banner-sm.jpg 500w, images/banner.jpg" alt="movies and series banner" />
-    </div>
-    <section class="selection-area">
-      <div id="filter-area">
-        <label class="filter-label" for="content-type">Filter by Type:</label>
-        <select class="filter-select" id="content-type">
-          <option value="all">All types</option>
-          <option value="movie" selected>Movies</option>
-          <option value="series">Series</option>
-        </select>
+  <body>
+    <header class="divider" id="main-header"></header>
+    <main class="divider">
+      <div class="hero">
+        <img
+          src="/images/banner-sm.jpg"
+          srcset="images/banner-sm.jpg 500w, images/banner.jpg"
+          alt="movies and series banner"
+        />
       </div>
-      <div id="search-area">
-        <label class="search-label" for="content-search">Search for:</label>
-        <input type="text" id="search-for" name="search-for" value="Akira">
-        <input type="submit" id="search-button" value="Search and Filter">
-      </div>
-      <div id="sort-area">
-        <label class="sort-label" for="content-sort">Sort by:</label>
+      <section class="selection-area">
+        <div id="filter-area">
+          <label class="filter-label" for="content-type">Filter by Type:</label>
+          <select class="filter-select" id="content-type">
+            <option value="all">All types</option>
+            <option value="movie" selected>Movies</option>
+            <option value="series">Series</option>
+          </select>
+        </div>
+        <div id="search-area">
+          <label class="search-label" for="content-search">Search for:</label>
+          <input type="text" id="search-for" name="search-for" value="Akira" />
+          <input type="submit" id="search-button" value="Search and Filter" />
+        </div>
+        <div id="sort-area">
+          <label class="sort-label" for="content-sort">Sort by:</label>
 
-        <select class="sort-select" id="content-sort">
-          <option value="title_asc">Title A-Z</option>
-          <option value="title">Title Z-A</option>
-          <option value="film_year_asc">Year ascending</option>
-          <option value="film_year">Year descending</option>
-        </select>
-      </div>
-    </section>
+          <select class="sort-select" id="content-sort">
+            <option value="title_asc">Title A-Z</option>
+            <option value="title">Title Z-A</option>
+            <option value="film_year_asc">Year ascending</option>
+            <option value="film_year">Year descending</option>
+          </select>
+        </div>
+      </section>
 
-    <section class="contents">
-      <h2>Contents found for <span id="title-searched"></span></h2>
-      <ul class="movie-list"></ul>
-    </section>
-  </main>
-  <footer id="main-footer"></footer>
-</body>
-
+      <section class="contents">
+        <h2 id="title-searched"></h2>
+        <ul class="movie-list"></ul>
+      </section>
+    </main>
+    <footer id="main-footer"></footer>
+  </body>
 </html>
